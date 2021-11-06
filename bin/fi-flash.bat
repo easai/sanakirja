@@ -1,2 +1,2 @@
 @REM Finnish vocabulary flash card
-@py fi-flash.py %*
+@py -m sanakirja.fi-flash %*

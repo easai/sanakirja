@@ -1,2 +1,2 @@
 @REM Finnish vocabulary quiz (enter the word)
-@py fi-write.py %*
+@py -m sanakirja.fi-write %*

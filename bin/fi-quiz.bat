@@ -1,2 +1,2 @@
 @REM Finnish vocabulary quiz
-@py fi-quiz.py %*
+@py -m sanakirja.fi-quiz %*

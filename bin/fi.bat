@@ -1,2 +1,2 @@
 @REM Finnish online dictionary
-@py fi.py %1
+@py -m sanakirja.fi %1

@@ -30,6 +30,9 @@ class Sana():
         """
         print(f"[{self.exp}] means [{self.desc}]")
 
+    def test():
+        print("test")
+
 
 class SanaKirja():
     """Class for sanakirja dictonary.
