@@ -3,7 +3,7 @@ A collection of client side apps for sanakirja API.
 
 Installation:
 <pre>
-> pip install https://github.com/easai/sanakirja
+> pip install git+https://github.com/easai/sanakirja
 </pre>
 
 Documentation:
