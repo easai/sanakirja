@@ -31,3 +31,30 @@ A sample session would look as follows:
 Which best describes the word [kivi]? 3
 Correct. [kivi] means [stone, rock]
 </pre>
+
+fi-write.py -- Finnish vocabulary quiz (type in the word).
+<pre>
+Usage: fi-write.py [--help|-h] [--local|-l] [-n N] [-m M] [--pause|-p PAUSE]
+
+Options:
+    -h, --help  show this help message and exit
+    -l, --local  run locally
+    -n N    number of tests (default: 10)
+    -m M    number of choices (default: 5)
+    -p, --pause PAUSE  number of seconds before going on
+</pre>
+A sample session would look as follows:
+<pre>
+Which of the following best describes [no (auxiliary verb)]?
+sotkuinen
+ei
+parsakaali
+aika
+Japani
+Enter the word: Japani
+Incorrect.
+[ei] means [no (auxiliary verb)].
+
+Review the following word(s):
+[ei] means [no (auxiliary verb)].
+</pre>
