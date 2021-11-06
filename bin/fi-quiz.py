@@ -9,7 +9,6 @@ Options:
     -m M    number of choices (default: 5)
     -p, --pause PAUSE  number of seconds before going on
 """
-import requests
 from docopt import docopt
 import random
 import time

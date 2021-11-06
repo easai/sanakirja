@@ -41,13 +41,16 @@ class SanaKirja():
 
     """
 
-    def __init__(self, url):
+    def __init__(self, url=None):
         """Constructor.
 
         Args:
             lst(string): server url
         """
-        self.url = url
+        if url:
+            self.url = url
+        else:
+            self.url = "http://localhost:5000"
 
     def rand(self):
         """Obtain a random entry.
