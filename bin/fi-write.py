@@ -14,7 +14,7 @@ from docopt import docopt
 import random
 import unidecode
 import time
-from fi_lib import *
+from sanakirja import *
 
 
 url = "https://sanakirja.pythonanywhere.com"

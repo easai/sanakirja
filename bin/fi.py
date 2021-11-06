@@ -10,6 +10,7 @@ Options:
 import requests
 from docopt import docopt
 import time
+from sanakirja import *
 
 
 url = "https://sanakirja.pythonanywhere.com"
@@ -25,7 +26,8 @@ def fi(word, lang=None):
         n = len(res)
         if type(res) is list:
             for item in res:
-                print(f"[{item['expression']}] means [{item['description']}]")
+                sana = Sana(item)
+                sana.dump()
         else:
             print('That is not in my dictionary (sorry!).')
     except Exception as e:

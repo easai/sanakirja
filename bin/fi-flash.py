@@ -9,13 +9,10 @@ Options:
 """
 import requests
 from docopt import docopt
-from fi_lib import *
+from sanakirja import *
 
 
-url = "https://sanakirja.pythonanywhere.com"
-
-
-def fi(n=10):
+def fi(url, n=10):
     sanakirja = SanaKirja(url)
     try:
         for i in range(n):
@@ -35,6 +32,7 @@ if __name__ == "__main__":
             n = int(args['-n'])
         except ValueError:
             print("n must be an integer")
+    url = "https://sanakirja.pythonanywhere.com"
     if args["--local"]:
         url = "http://localhost:5000"
-    fi(n)
+    fi(url, n)

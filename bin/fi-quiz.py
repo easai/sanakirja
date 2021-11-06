@@ -13,7 +13,7 @@ import requests
 from docopt import docopt
 import random
 import time
-from fi_lib import *
+from sanakirja import *
 
 
 url = "https://sanakirja.pythonanywhere.com"

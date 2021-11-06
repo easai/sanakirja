@@ -1,12 +1,26 @@
+"""Classes for sanakirja API
+
+"""
 import requests
 
 
 class Sana():
+    """Class for a dictonary entry.
+
+    This is a class for a record structure for the sanakirja dictionary.
+
+    Attributes:
+        exp (string): the word
+        desc (string): the description of the word
+
+    """
+
     def __init__(self, rec):
         """Constructor.
 
         Args:
             rec(dictionary): string in json format
+
         """
         self.exp = rec['expression']
         self.desc = rec['description']
@@ -18,6 +32,15 @@ class Sana():
 
 
 class SanaKirja():
+    """Class for sanakirja dictonary.
+
+    This is a class for the sanakirja dictionary.
+
+    Attributes:
+        url (string): the server url
+
+    """
+
     def __init__(self, url):
         """Constructor.
 
