@@ -12,9 +12,11 @@ import requests
 from docopt import docopt
 import random
 import time
+from fi_lib import *
 
 
 url = "https://sanakirja.pythonanywhere.com"
+wrong = []
 
 
 def quiz(n=10, n_choices=5):
@@ -35,16 +37,20 @@ def quiz(n=10, n_choices=5):
             try:
                 choice = int(input(f"Which best describes the word [{exp}]? "))
                 if choice - 1 == r:
-                    print(
-                        f"Correct.")
+                    print(f"Correct.")
                 else:
-                    print(
-                        f"Incorrect.")
+                    wrong.append(ans)
+                    print(f"Incorrect.")
+                    wrong.append(res[choice])
+                    dump(res[choice])
             except Exception as e:
-                pass
-            print(f"[{exp}] means [{desc}]")
+                wrong.append(ans)
+            dump(ans)
             time.sleep(3)
             print()
+        if wrong:
+            print("Review the following word(s):")
+            dump_list(wrong)
     except Exception as e:
         print(str(e))
 

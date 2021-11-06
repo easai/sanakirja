@@ -14,6 +14,7 @@ from docopt import docopt
 import random
 import unidecode
 import time
+from fi_lib import *
 
 
 url = "https://sanakirja.pythonanywhere.com"
@@ -44,14 +45,13 @@ def quiz(n=10, n_choices=5):
                     wrong.append(ans)
                     print(f"Incorrect.")
             except Exception as e:
-                pass
-            print(f"[{exp}] means [{desc}].")
+                wrong.append(ans)
+            dump(ans)
             time.sleep(pause)
             print()
         if wrong:
             print("Review the following word(s):")
-            for item in wrong:
-                print(f"[{item['expression']}] means [{item['description']}].")
+            dump_list(wrong)
     except Exception as e:
         print(str(e))
 
