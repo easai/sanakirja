@@ -1,6 +1,14 @@
 # sanakirja
 A collection of client side apps for sanakirja API.
 
+Installation:
+<pre>
+> pip install https://github.com/easai/sanakirja
+</pre>
+
+Documentation:
+https://easai.github.io/sanakirja/
+
 fi.py -- Finnish online dictionary
 <pre>
 Usage: fi.py [--help|-h] [--local|-l] [--fi|-f] <word>
