@@ -1,6 +1,16 @@
 # sanakirja
 A collection of client side apps for sanakirja API.
 
+fi.py -- Finnish online dictionary
+<pre>
+Usage: fi.py [--help|-h] [--local|-l] [--fi|-f] <word>
+
+Options:
+    -h, --help  show this help message and exit
+    -l, --local  run locally
+    -f, --fi    the word is Finnish
+</pre>
+
 fi-flash.py -- Finnish flash cards
 <pre>
 Usage: fi-flash.py [--help|-h] [--local|-l] [-n N]
