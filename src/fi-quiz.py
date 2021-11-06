@@ -1,12 +1,13 @@
 """Finnish vocabulary quiz.
 
-Usage: fi-quiz.py [--help|-h] [--local|-l] [-n N] [-m M]
+Usage: fi-quiz.py [--help|-h] [--local|-l] [-n N] [-m M] [--pause|-p PAUSE]
 
 Options:
     -h, --help  show this help message and exit
     -l, --local  run locally
     -n N    number of tests (default: 10)
     -m M    number of choices (default: 5)
+    -p, --pause PAUSE  number of seconds before going on
 """
 import requests
 from docopt import docopt
@@ -17,39 +18,43 @@ from fi_lib import *
 
 url = "https://sanakirja.pythonanywhere.com"
 wrong = []
+pause = 3
 
 
 def quiz(n=10, n_choices=5):
     try:
+        sanakirja = SanaKirja(url)
         n_words = int(n)
         for i in range(n_words):
-            req = requests.get(f"{url}/nrand/{n_choices}")
-            res = req.json()
+            res = sanakirja.nrand(n_choices)
             n = len(res)
             r = random.randrange(0, n)
-            ans = res[r]
-            exp = ans['expression']
-            desc = ans['description']
+            ans = Sana(res[r])
             print()
             for j in range(n_choices):
-                opt = res[j]
-                print(f"{j+1}: {opt['description']}")
+                opt = Sana(res[j])
+                print(f"{j+1}: {opt.desc}")
             try:
-                choice = int(input(f"Which best describes the word [{exp}]? "))
-                if choice - 1 == r:
+                choice = int(
+                    input(f"Which best describes the word [{ans.exp}]? ")) - 1
+                if choice == r:
                     print(f"Correct.")
                 else:
+                    wrong.append(ans)
                     print(f"Incorrect.")
-                    wrong.append(res[choice])
-                    dump(res[choice])
+                    sel = Sana(res[choice])
+                    print(f"{choice=}")
+                    print(sel)
+                    wrong.append(sel)
+                    sel.dump()
             except Exception as e:
                 wrong.append(ans)
-            dump(ans)
+            ans.dump()
             time.sleep(3)
             print()
         if wrong:
             print("Review the following word(s):")
-            dump_list(wrong)
+            sanakirja.dump(wrong)
     except Exception as e:
         print(str(e))
 
@@ -70,4 +75,9 @@ if __name__ == "__main__":
             print("m must be an integer")
     if args["--local"]:
         url = "http://localhost:5000"
+    if args['--pause']:
+        try:
+            pause = int(args['--pause'][0])
+        except ValueError:
+            print("PAUSE must be an integer")
     quiz(n, m)

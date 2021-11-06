@@ -8,22 +8,21 @@ Options:
     -n N    number of tests (default: 10)
 """
 import requests
-import platform
 from docopt import docopt
+from fi_lib import *
 
 
-ossystem = platform.uname()[0]
 url = "https://sanakirja.pythonanywhere.com"
 
 
 def fi(n=10):
+    sanakirja = SanaKirja(url)
     try:
         for i in range(n):
-            r = requests.get(url + "/rand")
-            res = r.json()
-            exp = res['expression']
-            input(f"{exp}?")
-            print(f"{exp}: {res['description']}")
+            r = sanakirja.rand()
+            sana = Sana(r)
+            input(f"{sana.exp}?")
+            print(f"{sana.exp}: {sana.desc}")
     except Exception as e:
         print(str(e))
 

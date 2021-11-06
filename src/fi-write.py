@@ -24,34 +24,32 @@ pause = 3
 
 def quiz(n=10, n_choices=5):
     try:
+        sanakirja = SanaKirja(url)
         n_words = int(n)
         for i in range(n_words):
-            req = requests.get(f"{url}/nrand/{n_choices}")
-            res = req.json()
+            res = sanakirja.nrand(n_choices)
             n = len(res)
             r = random.randrange(0, n)
-            ans = res[r]
-            exp = ans['expression']
-            desc = ans['description']
-            print(f"Which of the following best describes [{desc}]?")
+            ans = Sana(res[r])
+            print(f"Which of the following best describes [{ans.desc}]?")
             for j in range(n_choices):
-                opt = res[j]
-                print(f"{opt['expression']}")
+                opt = Sana(res[j])
+                print(f"{opt.exp}")
             try:
                 choice = input("Enter the word: ")
-                if unidecode.unidecode(choice) == unidecode.unidecode(exp):
+                if unidecode.unidecode(choice) == unidecode.unidecode(ans.exp):
                     print(f"Correct.")
                 else:
                     wrong.append(ans)
                     print(f"Incorrect.")
             except Exception as e:
                 wrong.append(ans)
-            dump(ans)
+            ans.dump()
             time.sleep(pause)
             print()
         if wrong:
             print("Review the following word(s):")
-            dump_list(wrong)
+            sanakirja.dump(wrong)
     except Exception as e:
         print(str(e))
 
