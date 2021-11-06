@@ -30,7 +30,7 @@ def quiz(n=10, n_choices=5):
             n = len(res)
             r = random.randrange(0, n)
             ans = Sana(res[r])
-            print(f"Which of the following best describes [{ans.desc}]?")
+            print(f"Which of the following words best describes [{ans.desc}]?")
             for j in range(n_choices):
                 opt = Sana(res[j])
                 print(f"{opt.exp}")
