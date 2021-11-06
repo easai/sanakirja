@@ -6,10 +6,18 @@ Installation:
 > pip install git+https://github.com/easai/sanakirja
 </pre>
 
+Run apps as follows:
+<pre>
+> py -m sanakirja.fi
+> py -m sanakirja.fi-flash
+> py -m sanakirja.fi-quiz
+> py -m sanakirja.fi-write
+</pre>
+
 Documentation:
 https://easai.github.io/sanakirja/
 
-py -m sanakirja.fi -- Finnish online dictionary
+fi.py -- Finnish online dictionary
 <pre>
 Usage: fi.py [--help|-h] [--local|-l] [--fi|-f] <word>
 
@@ -19,7 +27,7 @@ Options:
     -f, --fi    the word is Finnish
 </pre>
 
-py -m sanakirja.fi-flash -- Finnish flash cards
+fi-flash.py -- Finnish flash cards
 <pre>
 Usage: fi-flash.py [--help|-h] [--local|-l] [-n N]
 
@@ -29,7 +37,7 @@ Options:
     -n N    number of tests (default: 10)
 </pre>
 
-py -m sanakirja.fi-quiz -- Finnish vocabulary quiz.
+fi-quiz.py -- Finnish vocabulary quiz.
 <pre>
 Usage: fi-quiz.py [--help|-h] [--local|-l] [-n N] [-m M]
 
@@ -50,7 +58,7 @@ Which best describes the word [kivi]? 3
 Correct. [kivi] means [stone, rock]
 </pre>
 
-py -m sanakirja.fi-write -- Finnish vocabulary quiz (type in the word).
+fi-write.py -- Finnish vocabulary quiz (type in the word).
 <pre>
 Usage: fi-write.py [--help|-h] [--local|-l] [-n N] [-m M] [--pause|-p PAUSE]
 
