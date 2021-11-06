@@ -32,13 +32,16 @@ def quiz(n=10, n_choices=5):
             for j in range(n_choices):
                 opt = res[j]
                 print(f"{j+1}: {opt['description']}")
-            choice = int(input(f"Which best describes the word [{exp}]? "))
-            if choice - 1 == r:
-                print(
-                    f"Correct. [{ans['expression']}] means [{ans['description']}]")
-            else:
-                print(
-                    f"Incorrect. [{ans['expression']}] means [{ans['description']}]")
+            try:
+                choice = int(input(f"Which best describes the word [{exp}]? "))
+                if choice - 1 == r:
+                    print(
+                        f"Correct. [{ans['expression']}] means [{ans['description']}]")
+                else:
+                    print(
+                        f"Incorrect. [{ans['expression']}] means [{ans['description']}]")
+            except:
+                print(f"[{ans['expression']}] means [{ans['description']}]")
             print()
     except Exception as e:
         print(str(e))
