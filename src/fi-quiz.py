@@ -39,7 +39,6 @@ def quiz(n=10, n_choices=5):
                 if choice - 1 == r:
                     print(f"Correct.")
                 else:
-                    wrong.append(ans)
                     print(f"Incorrect.")
                     wrong.append(res[choice])
                     dump(res[choice])
