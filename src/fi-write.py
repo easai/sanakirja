@@ -1,12 +1,13 @@
 """Finnish vocabulary quiz (type in the word).
 
-Usage: fi-write.py [--help|-h] [--local|-l] [-n N] [-m M]
+Usage: fi-write.py [--help|-h] [--local|-l] [-n N] [-m M] [--pause|-p PAUSE]
 
 Options:
     -h, --help  show this help message and exit
     -l, --local  run locally
     -n N    number of tests (default: 10)
     -m M    number of choices (default: 5)
+    -p, --pause PAUSE  number of seconds before going on
 """
 import requests
 from docopt import docopt
@@ -17,6 +18,7 @@ import time
 
 url = "https://sanakirja.pythonanywhere.com"
 wrong = []
+pause = 3
 
 
 def quiz(n=10, n_choices=5):
@@ -42,13 +44,14 @@ def quiz(n=10, n_choices=5):
                     wrong.append(ans)
                     print(f"Incorrect.")
             except Exception as e:
-                print(str(e))
+                pass
             print(f"[{exp}] means [{desc}].")
-            time.sleep(3)
+            time.sleep(pause)
             print()
-        print("Review the following word(s):")
-        for item in wrong:
-            print(f"[{item['expression']}] means [{item['description']}].")
+        if wrong:
+            print("Review the following word(s):")
+            for item in wrong:
+                print(f"[{item['expression']}] means [{item['description']}].")
     except Exception as e:
         print(str(e))
 
@@ -61,12 +64,17 @@ if __name__ == "__main__":
         try:
             n = int(args['-n'])
         except ValueError:
-            print("n must be an integer")
+            print("N must be an integer")
     if args['-m']:
         try:
             m = int(args['-m'])
         except ValueError:
-            print("m must be an integer")
+            print("M must be an integer")
     if args["--local"]:
         url = "http://localhost:5000"
+    if args['--pause']:
+        try:
+            pause = int(args['--pause'][0])
+        except ValueError:
+            print("PAUSE must be an integer")
     quiz(n, m)

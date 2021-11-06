@@ -9,12 +9,11 @@ Options:
     -m M    number of choices (default: 5)
 """
 import requests
-import platform
 from docopt import docopt
 import random
+import time
 
 
-ossystem = platform.uname()[0]
 url = "https://sanakirja.pythonanywhere.com"
 
 
@@ -28,6 +27,7 @@ def quiz(n=10, n_choices=5):
             r = random.randrange(0, n)
             ans = res[r]
             exp = ans['expression']
+            desc = ans['description']
             print()
             for j in range(n_choices):
                 opt = res[j]
@@ -36,12 +36,14 @@ def quiz(n=10, n_choices=5):
                 choice = int(input(f"Which best describes the word [{exp}]? "))
                 if choice - 1 == r:
                     print(
-                        f"Correct. [{ans['expression']}] means [{ans['description']}]")
+                        f"Correct.")
                 else:
                     print(
-                        f"Incorrect. [{ans['expression']}] means [{ans['description']}]")
-            except:
-                print(f"[{ans['expression']}] means [{ans['description']}]")
+                        f"Incorrect.")
+            except Exception as e:
+                pass
+            print(f"[{exp}] means [{desc}]")
+            time.sleep(3)
             print()
     except Exception as e:
         print(str(e))
