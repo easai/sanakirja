@@ -9,7 +9,7 @@ Installation:
 Documentation:
 https://easai.github.io/sanakirja/
 
-fi.py -- Finnish online dictionary
+py -m sanakirja.fi -- Finnish online dictionary
 <pre>
 Usage: fi.py [--help|-h] [--local|-l] [--fi|-f] <word>
 
@@ -19,7 +19,7 @@ Options:
     -f, --fi    the word is Finnish
 </pre>
 
-fi-flash.py -- Finnish flash cards
+py -m sanakirja.fi-flash -- Finnish flash cards
 <pre>
 Usage: fi-flash.py [--help|-h] [--local|-l] [-n N]
 
@@ -29,7 +29,7 @@ Options:
     -n N    number of tests (default: 10)
 </pre>
 
-fi-quiz.py -- Finnish vocabulary quiz.
+py -m sanakirja.fi-quiz -- Finnish vocabulary quiz.
 <pre>
 Usage: fi-quiz.py [--help|-h] [--local|-l] [-n N] [-m M]
 
@@ -50,7 +50,7 @@ Which best describes the word [kivi]? 3
 Correct. [kivi] means [stone, rock]
 </pre>
 
-fi-write.py -- Finnish vocabulary quiz (type in the word).
+py -m sanakirja.fi-write -- Finnish vocabulary quiz (type in the word).
 <pre>
 Usage: fi-write.py [--help|-h] [--local|-l] [-n N] [-m M] [--pause|-p PAUSE]
 
