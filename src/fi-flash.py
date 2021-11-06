@@ -1,7 +1,5 @@
 """Finnish flash cards
 
-Command line::
-
 Usage: fi-flash.py [--help|-h] [--local|-l] [-n N]
 
 Options:
