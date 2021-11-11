@@ -12,8 +12,8 @@ from docopt import docopt
 from sanakirja import *
 
 
-def fi(url, n=10):
-    sanakirja = SanaKirja(url)
+def fi(n=10, is_local=False):
+    sanakirja = SanaKirja(is_local=is_local)
     try:
         for i in range(n):
             r = sanakirja.rand()
@@ -32,7 +32,4 @@ if __name__ == "__main__":
             n = int(args['-n'])
         except ValueError:
             print("n must be an integer")
-    url = SANAKIRJA_API
-    if args["--local"]:
-        url = "http://localhost:5000"
-    fi(url, n)
+    fi(n, is_local=args["--local"])

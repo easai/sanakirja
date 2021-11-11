@@ -13,16 +13,13 @@ import time
 from sanakirja import *
 
 
-url = SANAKIRJA_API
-
-
-def fi(word, lang=None):
+def fi(word, lang=None, is_local=False):
     try:
+        sanakirja = SanaKirja(is_local=is_local)
         if not lang:
-            req = requests.get(f"{url}/{word}")
+            res = sanakirja.en(word)
         else:
-            req = requests.get(f"{url}/fi/{word}")
-        res = req.json()
+            req = sanakirja.fi(word)
         n = len(res)
         if type(res) is list:
             for item in res:
@@ -36,9 +33,7 @@ def fi(word, lang=None):
 
 if __name__ == "__main__":
     args = docopt(__doc__)
-    if args["--local"]:
-        url = "http://localhost:5000"
     lang = None
     if args["--fi"]:
         lang = 'fi'
-    fi(args['<word>'], lang)
+    fi(args['<word>'], lang, is_local=args['--local'])

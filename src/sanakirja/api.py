@@ -4,7 +4,7 @@
 import requests
 
 
-SANAKIRJA_API = "https://sanakirja.pythonanywhere.com"
+API_URL = "https://sanakirja.pythonanywhere.com/api"
 
 
 class Sana():
@@ -47,16 +47,27 @@ class SanaKirja():
 
     """
 
-    def __init__(self, url=None):
+    def __init__(self, url=None, is_local=False):
         """Constructor.
 
         Args:
             lst(string): server url
         """
-        if url:
-            self.url = url
-        else:
-            self.url = "http://localhost:5000"
+        self.url = API_URL
+        if is_local:
+            self.url = "http://localhost:5000/api"
+
+    def fi(self, word):
+        """Retrieve records with expression WORD.
+        """
+        req = requests.get(f"{self.url}/fi/{word}")
+        return req.json()
+
+    def en(self, word):
+        """Retrieve records with description WORD.
+        """
+        req = requests.get(f"{self.url}/en/{word}")
+        return req.json()
 
     def rand(self):
         """Obtain a random entry.

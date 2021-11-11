@@ -14,14 +14,13 @@ import random
 import time
 from sanakirja import *
 
-url = SANAKIRJA_API
 wrong = []
 pause = 3
 
 
-def quiz(n=10, n_choices=5):
+def quiz(n=10, n_choices=5, is_local=False):
     try:
-        sanakirja = SanaKirja(url)
+        sanakirja = SanaKirja(is_local=is_local)
         n_words = int(n)
         for i in range(n_words):
             res = sanakirja.nrand(n_choices)
@@ -71,11 +70,9 @@ if __name__ == "__main__":
             m = int(args['-m'])
         except ValueError:
             print("m must be an integer")
-    if args["--local"]:
-        url = "http://localhost:5000"
     if args['--pause']:
         try:
             pause = int(args['--pause'][0])
         except ValueError:
             print("PAUSE must be an integer")
-    quiz(n, m)
+    quiz(n, m, is_local=args['--local'])
