@@ -4,6 +4,9 @@
 import requests
 
 
+SANAKIRJA_API = "https://sanakirja.pythonanywhere.com"
+
+
 class Sana():
     """Class for a dictonary entry.
 

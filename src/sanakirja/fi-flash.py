@@ -32,7 +32,7 @@ if __name__ == "__main__":
             n = int(args['-n'])
         except ValueError:
             print("n must be an integer")
-    url = "https://sanakirja.pythonanywhere.com"
+    url = SANAKIRJA_API
     if args["--local"]:
         url = "http://localhost:5000"
     fi(url, n)

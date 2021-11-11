@@ -14,8 +14,7 @@ import random
 import time
 from sanakirja import *
 
-
-url = "https://sanakirja.pythonanywhere.com"
+url = SANAKIRJA_API
 wrong = []
 pause = 3
 

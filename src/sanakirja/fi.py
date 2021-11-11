@@ -13,7 +13,7 @@ import time
 from sanakirja import *
 
 
-url = "https://sanakirja.pythonanywhere.com"
+url = SANAKIRJA_API
 
 
 def fi(word, lang=None):
