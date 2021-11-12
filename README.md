@@ -1,6 +1,8 @@
 # sanakirja
 A collection of client side apps for sanakirja API.
 
+http://sanakirja.pythonanywhere.com/
+
 Installation:
 <pre>
 > pip install git+https://github.com/easai/sanakirja
